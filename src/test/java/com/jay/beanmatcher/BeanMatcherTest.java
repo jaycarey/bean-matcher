@@ -51,6 +51,11 @@ public class BeanMatcherTest {
         }
     }
 
+    @Test
+    public void detectsSkipAField() throws Exception {
+        assertThat(new TestObject("different", 123), comparesTo(referenceObject).onAllFields().exceptFor("text"));
+    }
+
     /**
      * Can't use the normal 'fail', as we are catching assertion errors!
      *
